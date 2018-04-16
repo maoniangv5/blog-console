@@ -9,6 +9,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import App from './App';
 import router from './router';
+import store from './vuex/store'
 
 Vue.config.productionTip = false;
 
@@ -18,6 +19,7 @@ Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
   components: { App }

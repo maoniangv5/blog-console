@@ -1,28 +1,49 @@
 <template>
-    <el-row id="home">
-        <el-col :span="24">
+    <el-row id="index">
+        <el-col :span="24" class="top">
             <topBar></topBar>
         </el-col>
-        <el-col :span="3">
-            <sideBar></sideBar>
+
+        <el-col :span="24" class="mid">
+            <div>
+                <sideBar></sideBar>
+            </div>
+            <div>
+                <contentArea></contentArea>
+            </div>
         </el-col>
-        <el-col :span="21">
-            <contentArea></contentArea>
+        <el-col :span="24" class="">
+            <footBar></footBar>
         </el-col>
+
     </el-row>
 </template>
 
 <script>
     import topBar from './common/topBar.vue'
     import sideBar from './common/sideBar.vue'
+    import footBar from './common/footBar.vue'
     import contentArea from './common/contentArea.vue'
-
     export default {
         name: 'index',
-        components: { topBar, sideBar, contentArea }
+        components: {
+            topBar,
+            sideBar,
+            footBar,
+            contentArea
+        }
     }
 </script>
 
-<style>
-
+<style scoped>
+    #index {
+        margin: 0;
+    };
+    .top {
+        border-bottom: 1px solid #eee;
+    }
+    .mid {
+        background-color: #f6f6f6;
+        padding: 0 5%;
+    }
 </style>
