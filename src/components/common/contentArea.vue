@@ -20,7 +20,15 @@
             };
         },
         mounted () {
-            this.collapse = this.$store.state.isCollapse
+            this.collapse = this.$store.state.isCollapse;
+            const that = this;
+            window.onresize = function temp() {
+                if (that.$store.state.isCollapse) {
+                    that.contSize.width = `${ window.innerWidth*.88 - 64 }px`
+                } else {
+                    that.contSize.width = `${ window.innerWidth*.88 - 180 }px`
+                }
+            };
         },
         watch: {
             isCollapse: function (isCollapse) {

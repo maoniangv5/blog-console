@@ -12,7 +12,7 @@
                 <contentArea></contentArea>
             </div>
         </el-col>
-        <el-col :span="24" class="">
+        <el-col :span="24" class="foot">
             <footBar></footBar>
         </el-col>
 
@@ -43,7 +43,9 @@
         border-bottom: 1px solid #eee;
     }
     .mid {
-        background-color: #f6f6f6;
         padding: 0 5%;
+    }
+    .foot {
+        background-color: #f6f6f6;
     }
 </style>

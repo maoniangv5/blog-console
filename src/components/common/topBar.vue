@@ -1,17 +1,17 @@
 <template>
     <el-row class="top">
-        <el-col :span="3" :lg="4" :md="6" :sm="8" :xs="8">
+        <el-col :span="showSearch?4:10">
             <router-link to="/">
                 <i class="fa fa-usb logo"></i>
-                <span class="title">xicha.biz</span>
+                <span class="title" v-if="showSite">xicha.biz</span>
             </router-link>
         </el-col>
-        <el-col :span="5" class="top-search" v-if="innerWidth>992">
+        <el-col :span="6" class="top-search" v-if="showSearch">
             <el-input placeholder="输入搜索内容..." v-model="search" size="mini">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
             </el-input>
         </el-col>
-        <el-col  :span="8" :lg="7" :md="5" :sm="8" :xs="8" :offset="12">
+        <el-col  :span="showSearch?4:14" :offset="!showSearch?0:10">
             <div class="avatar-area">
                 <div class="logout">退 出</div>
                 <img class="avatar" src="../../../static/image/avatar/avatar.jpg" alt="avatar" width="34" height="34">
@@ -26,13 +26,15 @@
         data() {
             return {
                 search: '',
-                innerWidth: null
+                showSite: window.innerWidth>1000?true:false,
+                showSearch: window.innerWidth>1000?true:false
             }
         },
         mounted () {
             const that = this;
             window.onresize = function temp() {
-                that.innerWidth = window.innerWidth
+                that.showSite = window.innerWidth>1000?true:false
+                that.showSearch = window.innerWidth>700?true:false
             };
         },
     }
