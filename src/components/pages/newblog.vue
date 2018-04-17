@@ -26,8 +26,8 @@
 
 <script>
     
-    import jsonServices from "../service/datahandler";
-    import markdown from '../components/markdown';
+    import jsonServices from "../../service/datahandler";
+    import markdown from '../base/md.vue';
     export default {
         name: 'index',
         data() {

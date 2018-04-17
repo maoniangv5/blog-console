@@ -21,21 +21,37 @@
 </template>
 
 <script>
+    import { mapState, mapMutations } from 'vuex';
+
     export default {
         name: 'topBar',
         data() {
             return {
                 search: '',
-                showSite: window.innerWidth>1000?true:false,
-                showSearch: window.innerWidth>1000?true:false
+                showSite: true,
+                showSearch: true
             }
         },
         mounted () {
             const that = this;
+            this.showSite = this.$store.state.innerWidth>1000?true:false
+            this.showSearch = this.$store.state.innerWidth>700?true:false
+            
             window.onresize = function temp() {
-                that.showSite = window.innerWidth>1000?true:false
-                that.showSearch = window.innerWidth>700?true:false
+                that.changeInnerWidth([window.innerWidth, window.innerHeight])
             };
+        },
+        computed: mapState(["innerWidth", "innerHeight"]),
+        methods: {
+            ...mapMutations([  
+                'changeInnerWidth'
+            ]),
+        },
+        watch: {
+            innerWidth: function (innerWidth) {
+                this.showSite = innerWidth>1000?true:false
+                this.showSearch = innerWidth>700?true:false
+            }
         },
     }
 </script>

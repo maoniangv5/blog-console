@@ -14,32 +14,27 @@
         data() {
             return {
                 contSize: {
-                    width: `${ window.innerWidth*.88 - 180 }px`
+                    width: `${ this.$store.state.innerWidth*0.85-180}px`
                 },
                 collapse: null
             };
         },
         mounted () {
             this.collapse = this.$store.state.isCollapse;
-            const that = this;
-            window.onresize = function temp() {
-                if (that.$store.state.isCollapse) {
-                    that.contSize.width = `${ window.innerWidth*.88 - 64 }px`
-                } else {
-                    that.contSize.width = `${ window.innerWidth*.88 - 180 }px`
-                }
-            };
         },
         watch: {
             isCollapse: function (isCollapse) {
                 if (!isCollapse) {
-                    this.contSize.width = `${ window.innerWidth*.88 - 180 }px`
+                    this.contSize.width = `${ this.innerWidth*.88 - 180 }px`
                 } else {
-                    this.contSize.width = `${ window.innerWidth*.88 - 64}px`
+                    this.contSize.width = `${ this.innerWidth*.88 - 64}px`
                 }
+            },
+            innerWidth(innerWidth) {
+                this.contSize.width = `${ innerWidth*0.85-180}px`
             }
         },
-        computed: mapState(["isCollapse"])
+        computed: mapState(["isCollapse", "innerWidth"])
     };
 </script>
 
@@ -51,5 +46,6 @@
         padding-top: 30px;
         margin-bottom: 23px;
         float: right;
+        border: 1px solid red
     }
 </style>

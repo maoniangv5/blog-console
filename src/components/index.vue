@@ -20,10 +20,10 @@
 </template>
 
 <script>
-    import topBar from './common/topBar.vue'
-    import sideBar from './common/sideBar.vue'
-    import footBar from './common/footBar.vue'
-    import contentArea from './common/contentArea.vue'
+    import topBar from './structure/topBar.vue'
+    import sideBar from './structure/sideBar.vue'
+    import footBar from './structure/footBar.vue'
+    import contentArea from './structure/contentArea.vue'
     export default {
         name: 'index',
         components: {

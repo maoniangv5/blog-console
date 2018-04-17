@@ -4,10 +4,10 @@
             <el-switch v-model="collapse" active-color="#13ce66" inactive-color="#ff4949">
             </el-switch>
         </div>
-        <div class="menu-area" :style="menuSize" @mouseover="hover" @mouseout="leave">
+        <div class="menu-area" :style="menuSize" @mouseover="hover($event)" @mouseout="leave">
             <el-menu class="menu" v-for="item in menuData" :key="item.index" :default-active="meunNow" @open="handleOpen" @close="handleClose" :collapse="isCollapse" @select="selectedItem">
                 <el-menu-item :index="item.index">
-                    <i class="fa fa-pie-chart"></i>
+                    <i :class="item.icon + ' fa-fw fa '"></i>
                     <span slot="title">{{item.title}}</span>
                 </el-menu-item>
             </el-menu>
@@ -23,11 +23,11 @@
         data() {
             return {
                 sideSize: {
-                    height: `${ window.innerHeight - 140 }px`,
+                    height: `${ this.$store.state.innerHeight - 140 }px`,
                     width: `${ 180 }px`,
                 },
                 menuSize: {
-                    height: `${ window.innerHeight - 200 }px`,
+                    height: `${ this.$store.state.innerHeight - 200 }px`,
                     width: `${ 180 }px`,
                     overflowX: `hidden`,
                     overflowY: `hidden`
@@ -37,22 +37,22 @@
                     {
                         index: '/blogs',
                         title: '博客',
-                        icon: 'fa fa-chart-line'
+                        icon: 'fa-file-word-o'
                     },
                     {
                         index: '/tags',
                         title: '标签',
-                        icon: 'fa fa-chart-line'
+                        icon: 'fa-tags'
                     },
                     {
                         index: '/media',
                         title: '媒体文件',
-                        icon: 'fa fa-chart-line'
+                        icon: 'fa-file-image-o'
                     },
                     {
                         index: '/sites',
                         title: '站内统计',
-                        icon: 'fa fa-chart-line'
+                        icon: 'fa-line-chart'
                     }
                 ],
                 meunNow: ''
@@ -62,16 +62,11 @@
         },
         mounted () {
             this.collapse = this.$store.state.isCollapse
-            
-            const that = this;
-            window.onresize = function temp() {
-                that.sideSize.height = `${ window.innerHeight - 140 }px`;
-                that.menuSize.height = `${ window.innerHeight - 200 }px`;
-            };
         },
         methods: {
             ...mapMutations([  
-                'changeCollapse'
+                'changeCollapse',
+                'changeInnerWidth'
             ]),
             handleOpen(key, keyPath) {
             },
@@ -80,11 +75,13 @@
             selectedItem(key, keyPath) {
                 this.meunNow = key
             },
-            hover() {
+            hover(event) {
                 this.menuSize.overflowY = `auto`
+                this.sideSize.borderRight = `none`
             },
             leave() {
                 this.menuSize.overflowY = `hidden`
+                this.sideSize.borderRight = `2px solid #eee`
             }
         },
         watch: {
@@ -97,9 +94,16 @@
                     this.menuSize.width = `${ 180 }px`;
                 }
                 this.changeCollapse()
+            },
+            innerHeight(innerHeight) {
+                this.sideSize.height = `${ innerHeight - 140 }px`
+                this.menuSize.height = `${ innerHeight - 200 }px`
+            },
+            innerWidth(innerWidth) {
+                this.collapse = innerWidth>700?true:false;
             }
         },
-        computed: mapState(["isCollapse"])
+        computed: mapState(["isCollapse", "innerWidth", "innerHeight"])
     };
 </script>
 

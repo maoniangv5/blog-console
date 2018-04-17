@@ -3,12 +3,18 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
-    isCollapse: true
+    isCollapse: true,
+    innerWidth: window.innerWidth,
+    innerHeight: window.innerHeight
 }
 
 const mutations = {
-    changeCollapse(state){
+    changeCollapse(state) {
         state.isCollapse = !state.isCollapse;
+    },
+    changeInnerWidth(state, arr) {
+        state.innerWidth = arr[0];
+        state.innerHeight = arr[1];
     }
 }
 
