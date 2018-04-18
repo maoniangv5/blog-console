@@ -1,0 +1,22 @@
+<svg width="100" height="86.6" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g stroke="null">
+  <title>background</title>
+  <rect x="-1" y="-1" width="102" height="88.6" id="canvas_background" fill="none" stroke="null"/>
+  <g id="canvasGrid" display="none" stroke="null">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)" stroke="null"/>
+  </g>
+ </g>
+ <g stroke="null">
+  <title>Layer 1</title>
+  <polygon fill="none" stroke-width="10" points="27.500001907348633,4.8649948090314865 72.5,4.8649948090314865 95,42.43239288032055 72.5,81.73500518500805 27.500001907348633,81.73500518500805 5,42.43239288032055 " id="svg_2" stroke="#409EFF"/>
+  <circle id="svg_3" fill="none" stroke-width="4" stroke="#ff4500" r="6" cy="26" cx="62"/>
+  <circle id="svg_4" fill="#ff4500" stroke-width="4" stroke="#ff4500" r="6" cy="62" cx="33"/>
+  <circle id="svg_5" fill="#ff4500" stroke="#ff4500" r="5" cy="43.3" cx="26"/>
+  <circle id="svg_6" fill="#ff4500" stroke="#ff4500" r="5" cy="43.3" cx="74"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="43.3" x2="26" y1="62" x1="33" stroke-opacity="null" stroke-width="3" stroke="#ff4500" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_10" y2="43.3" x2="74" y1="30" x1="64.75" stroke-opacity="null" stroke-width="3" stroke="#ff4500" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_9" x1="59.5" y1="29.5" x2="33" y2="62" stroke-opacity="null" stroke-width="5" stroke="#ff4500" fill="none"/>
+ </g>
+</svg>

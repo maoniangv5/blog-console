@@ -4,6 +4,7 @@ Vue.use(Vuex);
 
 const state = {
     isCollapse: true,
+    isScrollbar: true,
     innerWidth: window.innerWidth,
     innerHeight: window.innerHeight
 }
@@ -15,6 +16,9 @@ const mutations = {
     changeInnerWidth(state, arr) {
         state.innerWidth = arr[0];
         state.innerHeight = arr[1];
+    },
+    changeScrollbar(state) {
+        state.isScrollbar = !state.isScrollbar;
     }
 }
 

@@ -1,17 +1,18 @@
 <template>
     <div class="side" :style="sideSize">
         <div class="switch">
-            <el-switch v-model="collapse" active-color="#13ce66" inactive-color="#ff4949">
+            <el-switch v-model="collapse" active-color="#13ce66">
             </el-switch>
         </div>
         <div class="menu-area" :style="menuSize" @mouseover="hover($event)" @mouseout="leave">
-            <el-menu class="menu" v-for="item in menuData" :key="item.index" :default-active="meunNow" @open="handleOpen" @close="handleClose" :collapse="isCollapse" @select="selectedItem">
+            <el-menu class="menu" v-for="item in menuData" :key="item.index" :default-active="meunNow" @open="handleOpen" @close="handleClose" :collapse="isCollapse" @select="selectedItem" router>
                 <el-menu-item :index="item.index">
                     <i :class="item.icon + ' fa-fw fa '"></i>
                     <span slot="title">{{item.title}}</span>
                 </el-menu-item>
             </el-menu>
         </div>
+        <hr />
     </div>
 </template>
 
@@ -35,27 +36,27 @@
                 collapse: null,
                 menuData: [
                     {
-                        index: '/blogs',
+                        index: '/home/dashboard',
+                        title: '概览',
+                        icon: 'fa-line-chart'
+                    },
+                    {
+                        index: '/home/blogs',
                         title: '博客',
                         icon: 'fa-file-word-o'
                     },
                     {
-                        index: '/tags',
+                        index: '/home/tags',
                         title: '标签',
                         icon: 'fa-tags'
                     },
                     {
-                        index: '/media',
+                        index: '/home/media',
                         title: '媒体文件',
                         icon: 'fa-file-image-o'
-                    },
-                    {
-                        index: '/sites',
-                        title: '站内统计',
-                        icon: 'fa-line-chart'
                     }
                 ],
-                meunNow: ''
+                meunNow: this.$route.path
             };
         },
         created() {
@@ -77,11 +78,9 @@
             },
             hover(event) {
                 this.menuSize.overflowY = `auto`
-                this.sideSize.borderRight = `none`
             },
             leave() {
                 this.menuSize.overflowY = `hidden`
-                this.sideSize.borderRight = `2px solid #eee`
             }
         },
         watch: {
@@ -100,7 +99,7 @@
                 this.menuSize.height = `${ innerHeight - 200 }px`
             },
             innerWidth(innerWidth) {
-                this.collapse = innerWidth>700?true:false;
+                this.collapse = innerWidth>1000?true:false;
             }
         },
         computed: mapState(["isCollapse", "innerWidth", "innerHeight"])
@@ -113,7 +112,6 @@
         position: fixed;
         top: 80px;
         overflow-y: auto;
-        border-right: 2px solid #eee
     }
     .switch {
         position: fixed;

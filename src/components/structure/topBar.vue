@@ -1,6 +1,6 @@
 <template>
     <el-row class="top">
-        <el-col :span="showSearch?4:10">
+        <el-col :span="4">
             <router-link to="/">
                 <i class="fa fa-usb logo"></i>
                 <span class="title" v-if="showSite">xicha.biz</span>
@@ -11,7 +11,7 @@
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
             </el-input>
         </el-col>
-        <el-col  :span="showSearch?4:14" :offset="!showSearch?0:10">
+        <el-col  :span="showSearch?8:12" :offset="showSearch?6:8">
             <div class="avatar-area">
                 <div class="logout">退 出</div>
                 <img class="avatar" src="../../../static/image/avatar/avatar.jpg" alt="avatar" width="34" height="34">
@@ -24,7 +24,7 @@
     import { mapState, mapMutations } from 'vuex';
 
     export default {
-        name: 'topBar',
+        name: 'top',
         data() {
             return {
                 search: '',

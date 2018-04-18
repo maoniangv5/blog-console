@@ -1,5 +1,5 @@
 <template>
-    <el-row id="index">
+    <el-row id="home">
         <el-col :span="24" class="top">
             <topBar></topBar>
         </el-col>
@@ -25,7 +25,7 @@
     import footBar from './structure/footBar.vue'
     import contentArea from './structure/contentArea.vue'
     export default {
-        name: 'index',
+        name: 'home',
         components: {
             topBar,
             sideBar,
