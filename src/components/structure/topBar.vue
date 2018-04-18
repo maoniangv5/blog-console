@@ -1,14 +1,14 @@
 <template>
-    <el-row class="top">
+    <el-row id="top">
         <el-col :span="4">
             <router-link to="/">
-                <i class="fa fa-usb logo"></i>
-                <span class="title" v-if="showSite">xicha.biz</span>
+                <img v-if="showSite" src="../../../static/image/logo/logo-site.svg" type="image/svg+xml" height="40" class="logo">
+                <img v-else src="../../../static/image/logo/logo.svg" type="image/svg+xml" height="40" class="logo">
             </router-link>
         </el-col>
         <el-col :span="6" class="top-search" v-if="showSearch">
             <el-input placeholder="输入搜索内容..." v-model="search" size="mini">
-                <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
         </el-col>
         <el-col  :span="showSearch?8:12" :offset="showSearch?6:8">
@@ -34,7 +34,7 @@
         },
         mounted () {
             const that = this;
-            this.showSite = this.$store.state.innerWidth>1000?true:false
+            this.showSite = this.$store.state.innerWidth>1160?true:false
             this.showSearch = this.$store.state.innerWidth>700?true:false
             
             window.onresize = function temp() {
@@ -43,13 +43,11 @@
         },
         computed: mapState(["innerWidth", "innerHeight"]),
         methods: {
-            ...mapMutations([  
-                'changeInnerWidth'
-            ]),
+            ...mapMutations(['changeInnerWidth']),
         },
         watch: {
             innerWidth: function (innerWidth) {
-                this.showSite = innerWidth>1000?true:false
+                this.showSite = innerWidth>1160?true:false
                 this.showSearch = innerWidth>700?true:false
             }
         },
@@ -57,7 +55,7 @@
 </script>
 
 <style scoped>
-    .top{
+    #top {
         text-align: center;
         position: fixed;
         top: 0;
@@ -65,14 +63,12 @@
         background-color: #fff;
         padding: 0 2%;
         border-bottom: 1px solid #eee;
+        height:60px;
+        line-height: 60px;
         
     }
     .logo {
-        color: #409EFF;
-        font-size: 30px;
-        height: 60px;
-        line-height: 60px;
-        transform: rotate(90deg);
+        margin: 10px;
     }
     .title {
         font-size: 22px;

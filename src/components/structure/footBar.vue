@@ -1,5 +1,5 @@
 <template>
-    <el-row :class="isScrollbar?'no-fixed':'fixed'">
+    <el-row class="fixed">
         <p>【蜀ICP备18008315号】 | Copyright &copy; 2018 xicha.biz, all Rights Reserved.</p>
     </el-row>
 </template>
@@ -13,17 +13,6 @@
             return {
             }
         },
-        mounted () {
-            const that = this;
-            window.addEventListener('mouseover', that.handleScroll)
-        },
-        computed: mapState(["innerWidth", "innerHeight", "isScrollbar"]),
-        methods: {
-            ...mapMutations(['changeInnerWidth', "changeScrollbar"]),
-            handleScroll() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-            }
-        }
     }
 
 </script>
@@ -35,6 +24,8 @@
         width: 100%;
         line-height: 35px;
         font-size: 12px;
+        border-top: 1px solid #eee;
+        background-color: #fff;
     }
     .fixed {
         text-align: center;
@@ -44,6 +35,8 @@
         font-size: 12px;
         position: fixed;
         bottom: 0;
+        border-top: 1px solid #eee;
+        background-color: #fff;
     }
 
 </style>

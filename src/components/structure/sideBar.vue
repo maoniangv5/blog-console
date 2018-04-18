@@ -1,8 +1,10 @@
 <template>
-    <div class="side" :style="sideSize">
+    <div id="side" :style="sideSize">
         <div class="switch">
-            <el-switch v-model="collapse" active-color="#13ce66">
-            </el-switch>
+            <div @click="changeColl">
+                <i v-if="collapse" class="fa fa-ellipsis-v"></i>
+                <i v-else class="fa fa-ellipsis-h"></i>
+            </div>
         </div>
         <div class="menu-area" :style="menuSize" @mouseover="hover($event)" @mouseout="leave">
             <el-menu class="menu" v-for="item in menuData" :key="item.index" :default-active="meunNow" @open="handleOpen" @close="handleClose" :collapse="isCollapse" @select="selectedItem" router>
@@ -81,6 +83,9 @@
             },
             leave() {
                 this.menuSize.overflowY = `hidden`
+            },
+            changeColl() {
+                this.collapse = !this.collapse
             }
         },
         watch: {
@@ -107,7 +112,7 @@
 </script>
 
 <style scoped>
-    .side {
+    #side {
         text-align: center;
         position: fixed;
         top: 80px;
@@ -120,6 +125,10 @@
         top: 80px;
         z-index: 999;
         width: inherit;
+        cursor: pointer;
+    }
+    .switch:hover {
+        background-color: #ecf5ff
     }
     .menu-area {
         position: fixed;

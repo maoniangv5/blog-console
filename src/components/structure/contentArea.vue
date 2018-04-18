@@ -1,5 +1,5 @@
 <template>
-    <div class="cont" :style="contSize">
+    <div id="cont" :style="contSize">
         <router-view></router-view>
     </div>
 </template>
@@ -12,13 +12,18 @@
         data() {
             return {
                 contSize: {
-                    width: `${ this.$store.state.innerWidth*0.85-180}px`
+                    width: `${ this.$store.state.innerWidth*0.85-180}px`,
                 },
                 collapse: null
             };
         },
+        created () {
+        },
         mounted () {
             this.collapse = this.$store.state.isCollapse;
+        },
+        methods: {
+            ...mapMutations(['changeScrollbar']),
         },
         watch: {
             isCollapse: function (isCollapse) {
@@ -34,19 +39,19 @@
                 } else {
                     this.contSize.width = `${ this.innerWidth*.85 - 64}px`
                 }
-                // this.contSize.width = `${ innerWidth*0.85-180}px`
             }
         },
-        computed: mapState(["isCollapse", "innerWidth"])
+        computed: mapState(["isCollapse", "innerWidth", "isScrollbar", "innerHeight"])
     };
 </script>
 
 <style scoped>
-    .cont{
+    #cont {
         text-align: center;
         margin-top: 60px;
+        margin-bottom: 80px;
         float: right;
-        border: 1px solid red;
         padding: 0px;
+        margin-bottom: 60px;
     }
 </style>

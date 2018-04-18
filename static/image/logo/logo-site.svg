@@ -1,0 +1,24 @@
+<svg width="360.7" height="86.60000000000001" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g stroke="null">
+  <title>background</title>
+  <rect x="-1" y="-1" width="82.155556" height="21.244444" id="canvas_background" fill="none" stroke="null"/>
+  <g id="canvasGrid" display="none" stroke="null">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)" stroke="null"/>
+  </g>
+ </g>
+ <g stroke="null">
+  <title>Layer 1</title>
+  <line stroke-linecap="round" stroke-linejoin="round" id="svg_111" x1="59.90164" y1="28.65197" x2="36.96783" y2="57.12064" stroke-opacity="null" stroke-width="5" fill="none" stroke="#409EFF"/>
+  <polygon fill="none" stroke-linejoin="round" stroke-width="10" points="27.500001907348633,4.8649948090314865 72.5,4.8649948090314865 95,42.43239288032055 72.5,81.73500518500805 27.500001907348633,81.73500518500805 5,42.43239288032055 " id="svg_2" stroke="#409EFF"/>
+  <circle id="svg_3" fill="none" stroke-width="4" stroke="#ff4500" r="6" cy="26" cx="62"/>
+  <circle id="svg_4" fill="#ff4500" stroke-width="4" stroke="#ff4500" r="6" cy="62" cx="33"/>
+  <circle id="svg_5" fill="#ff4500" stroke="#ff4500" r="5" cy="43.3" cx="26"/>
+  <circle id="svg_6" fill="#ff4500" stroke="#ff4500" r="5" cy="43.3" cx="74"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="43.3" x2="26" y1="62" x1="33" stroke-opacity="null" stroke-width="3" stroke="#ff4500" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="round" id="svg_10" y2="43.3" x2="74" y1="30" x1="64.75" stroke-opacity="null" stroke-width="3" stroke="#ff4500" fill="none"/>
+  <line fill="#DCDFE6" stroke="#DCDFE6" stroke-width="6" x1="115" y1="10" x2="115" y2="76.6" id="svg_11" stroke-linejoin="round" stroke-linecap="round"/>
+  <text font-weight="normal" stroke="#000" transform="matrix(2.3059542179107666,0,0,2.290205717086792,-184.58846648782492,-26.832247022539377) " xml:space="preserve" text-anchor="start" font-family="Oswald, sans-serif" font-size="25" id="svg_8" y="40.17267" x="135" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#409EFF">xicha.biz</text>
+ </g>
+</svg>
