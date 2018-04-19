@@ -6,6 +6,7 @@ import dashboard from '@/components/pages/dashboard'
 import blogs from '@/components/pages/blogs'
 import tags from '@/components/pages/tags'
 import media from '@/components/pages/media'
+import newblog from '@/components/pages/newblog'
 
 Vue.use(Router)
 
@@ -32,6 +33,14 @@ const router = new Router({
                 { path: '/home/blogs', component: blogs},
                 { path: '/home/tags', component: tags},
                 { path: '/home/media', component: media}
+            ]
+        }
+        ,
+        {
+            path: '/home/blogs',
+            component: Home,
+            children:[
+                { path: '/home/blogs/new', component: newblog}
             ]
         }
     ]

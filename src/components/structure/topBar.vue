@@ -65,7 +65,7 @@
         border-bottom: 1px solid #eee;
         height:60px;
         line-height: 60px;
-        
+        z-index: 999;
     }
     .logo {
         margin: 10px;

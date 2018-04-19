@@ -42,8 +42,8 @@
     import Vue from 'vue'
     import marked from 'marked'
     import scroll from 'vue-scroll'
-    import hljs from '../../static/js/highlight.min.js'
-    import range from '../../static/js/rangeFn.js'
+    import hljs from '../../../static/js/highlight.min.js'
+    import range from '../../../static/js/rangeFn.js'
     Vue.use(scroll)
     marked.setOptions({
         renderer: new marked.Renderer(),
@@ -96,7 +96,7 @@
         },
         methods: {
             tabFn: function(evt) {
-                insertContent("", this);
+                insertContent("    ", this);
                 // 屏蔽屌tab切换事件
                 if (evt.preventDefault) {
                     evt.preventDefault();
@@ -240,16 +240,12 @@
                 this.maxPreviewScrollHeight = maxPreviewScrollHeight
             },
             previewScroll: function(e, position) {
-                if(this.maxEditScrollHeight!==0){
-                    let topPercent=position.scrollTop/this.maxPreviewScrollHeight;
-                    document.querySelector('.mdEditor').scrollTop = this.maxEditScrollHeight*topPercent;
-                }
+                let topPercent=position.scrollTop/this.maxPreviewScrollHeight;
+                document.querySelector('.mdEditor').scrollTop = this.maxEditScrollHeight*topPercent;
             },
             editScroll:function(e, position){
-                if(this.maxPreviewScrollHeight!==0){
-                    let topPercent=position.scrollTop/this.maxEditScrollHeight;
-                    document.querySelector('.previewContainer').scrollTop = this.maxPreviewScrollHeight*topPercent;
-                }
+                let topPercent=position.scrollTop/this.maxEditScrollHeight;
+                document.querySelector('.previewContainer').scrollTop = this.maxPreviewScrollHeight*topPercent;
             },
             happyDay:function(){
                 window.open('https://github.com/ovenslove/vue-mdEditor');
@@ -282,7 +278,7 @@
 <style lang="scss">
     /*引入reset文件*/
     
-    @import "../../../static/css/reset";
+    @import "../../../static/css/reset.scss";
     
     /*引入github的markdown样式文件*/
     

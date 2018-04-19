@@ -58,10 +58,12 @@
                         icon: 'fa-file-image-o'
                     }
                 ],
-                meunNow: this.$route.path
+                meunNow: null
             };
         },
         created() {
+            let pathArr = this.$route.path.split('/')
+            this.meunNow = [pathArr[0],pathArr[1],pathArr[2]].join('/')
         },
         mounted () {
             this.collapse = this.$store.state.isCollapse

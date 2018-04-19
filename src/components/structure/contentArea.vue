@@ -47,7 +47,6 @@
 
 <style scoped>
     #cont {
-        text-align: center;
         margin-top: 60px;
         margin-bottom: 80px;
         float: right;
