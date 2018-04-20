@@ -13,6 +13,7 @@
     "font-awesome": "^4.7.0",
     "marked": "^0.3.6",
     "nprogress": "^0.2.0",
+    "vm-markdown": "^0.2.8",
     "vue": "^2.2.2",
     "vue-router": "^2.2.0",
     "vue-scroll": "^2.0.2",

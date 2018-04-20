@@ -6,7 +6,7 @@ import dashboard from '@/components/pages/dashboard'
 import blogs from '@/components/pages/blogs'
 import tags from '@/components/pages/tags'
 import media from '@/components/pages/media'
-import newblog from '@/components/pages/newblog'
+import newblog from '@/components/pages/n'
 
 Vue.use(Router)
 

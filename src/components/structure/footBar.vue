@@ -37,6 +37,7 @@
         bottom: 0;
         border-top: 1px solid #eee;
         background-color: #fff;
+        z-index: 999;
     }
 
 </style>
