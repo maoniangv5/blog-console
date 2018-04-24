@@ -122,11 +122,7 @@ export default {
   },
   computed: {
     filterColor: function(){
-      if(this.bgMenu === '#fafbfc'){
-        return '#232323'
-      }else{
-        return this.bgMenu
-      }
+      return this.menuColor
     }
   },
   methods: {

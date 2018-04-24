@@ -47,10 +47,9 @@
 
 <style scoped>
     #cont {
-        margin-top: 60px;
-        margin-bottom: 80px;
+        margin: 60px  0;
         float: right;
-        padding: 0px;
+        padding: 20px 0;
         margin-bottom: 60px;
     }
 </style>

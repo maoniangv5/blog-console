@@ -48,6 +48,11 @@
                         icon: 'fa-file-word-o'
                     },
                     {
+                        index: '/home/category',
+                        title: '类目',
+                        icon: 'fa-bars'
+                    },
+                    {
                         index: '/home/tags',
                         title: '标签',
                         icon: 'fa-tags'
@@ -119,6 +124,7 @@
         position: fixed;
         top: 80px;
         overflow-y: auto;
+        border-right: 1px solid #eee
     }
     .switch {
         position: fixed;

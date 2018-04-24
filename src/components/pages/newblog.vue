@@ -1,51 +1,35 @@
 <template>
-    <el-row class="indexContainer">
-        <el-col class="editorContainer">
-            <markdown 
-            :mdValuesP="msg.mdValue"  
-            :fullPageStatusP="false" 
-            :editStatusP="true" 
-            :previewStatusP="true" 
-            :navStatusP="true"
-            :icoStatusP="true"  
-            @childevent="childEventHandler"
-            ></markdown>
-        </el-col>
+    <el-row>
+        <VmMarkdown theme="default"
+                    width="100%" 
+                    height="500px" 
+                    v-on:gethtml="showHtml"
+                    >
+        </VmMarkdown>
+        <p>{{htmlStr}}</p>
     </el-row>
 </template>
 
 <script>
-    import jsonServices from "../../service/datahandler";
-    import markdown from '../base/md.vue';
+    import VmMarkdown from '../base/md/components/index';
     export default {
         name: 'index',
         data() {
             return {
-                msgShow:'我要显示的内容',
-                dilogStatus:false,
-                msg: {
-                    mdValue:''
-                }
+                htmlStr: ''
             }
         },
         components: {
-            markdown
+            VmMarkdown
         },
         methods: {
-            childEventHandler:function(res){
-                this.msg=res;
+            showHtml (html) {
+                this.htmlStr = html
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .indexContainer {
-        width: 100%;
-        height: 400px;
-    }
-    .editorContainer {
-        height: 100%;
-        border: 1px solid #ddd;
-    }
+
 </style>
