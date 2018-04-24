@@ -1,67 +1,77 @@
 <template>
     <el-row>
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item>
-                <router-link to="/">
-                首页
-                </router-link>
-            </el-breadcrumb-item>
-            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-        </el-breadcrumb>
-
-        <el-col :span="24">
-            <el-table
-                border
-                :data="tableData"
-                style="width: 100%">
-                <el-table-column
-                label="日期"
-                width="180">
-                <template slot-scope="scope">
-                    <i class="el-icon-time"></i>
-                    <span style="margin-left: 10px">{{ scope.row.date }}</span>
-                </template>
-                </el-table-column>
-                <el-table-column
-                label="姓名"
-                width="180">
-                <template slot-scope="scope">
-                    <el-popover trigger="hover" placement="top">
-                    <p>姓名: {{ scope.row.name }}</p>
-                    <p>住址: {{ scope.row.address }}</p>
-                    <div slot="reference" class="name-wrapper">
-                        <el-tag size="medium">{{ scope.row.name }}</el-tag>
-                    </div>
-                    </el-popover>
-                </template>
-                </el-table-column>
-                <el-table-column label="操作">
-                <template slot-scope="scope">
-                    <el-button
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                    <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-                </template>
-                </el-table-column>
-            </el-table>
+        <el-col :span="9" class="tags">
+            <el-tag :key="tag" v-for="tag in tags" :disable-transitions="false">
+                {{tag}}
+            </el-tag>
+            <el-input class="input-new-tag" v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" @blur="handleInputConfirm"></el-input>
+            <el-button v-else class="button-new-tag" size="small" @click="showInput">
+                <i class="fa fa-plus"></i>
+            </el-button>
         </el-col>
     </el-row>
 </template>
 
 <script>
+    import { Message } from 'element-ui';
     export default {
         name: 'tags',
         data() {
             return {
-                tableData: []
+                tags: ['node', 'js', 'css', 'vue'],
+                inputVisible: false,
+                inputValue: ''
             }
         },
+        methods: {
+            handleClose(tag) {
+                this.tags.splice(this.tags.indexOf(tag), 1);
+            },
+            showInput() {
+                this.inputVisible = true;
+                this.$nextTick(_ => {
+                    this.$refs.saveTagInput.$refs.input.focus();
+                });
+            },
+            handleInputConfirm() {
+                let inputValue = this.inputValue;
+                if (this.tags.includes(this.inputValue)) {
+                    Message({
+                        showClose: true,
+                        message: '标签已存在！',
+                        type: 'error'
+                        }
+                    )
+                    return
+                }
+                if (inputValue) {
+                    this.tags.push(inputValue);
+                }
+                this.inputVisible = false;
+                this.inputValue = '';
+            }
+        }
+        
     }
 </script>
 
 <style scoped>
+    .tags {
+        border-right: 1px solid #eee
+    }
+    .el-tag {
+        margin: 5px 10px 5px 0;
+    }
+    .button-new-tag {
+        margin: 5px 10px 5px 0;
+        height: 32px;
+        line-height: 32px;
+        padding-top: 0;
+      }
+    .input-new-tag {
+        margin: 5px 10px 5px 0;
+        width: 90px;
+        vertical-align: bottom;
+    }
 
 </style>

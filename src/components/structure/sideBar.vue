@@ -66,11 +66,9 @@
                 meunNow: null
             };
         },
-        created() {
+        mounted () {
             let pathArr = this.$route.path.split('/')
             this.meunNow = [pathArr[0],pathArr[1],pathArr[2]].join('/')
-        },
-        mounted () {
             this.collapse = this.$store.state.isCollapse
         },
         methods: {
@@ -112,6 +110,10 @@
             },
             innerWidth(innerWidth) {
                 this.collapse = innerWidth>1000?true:false;
+            },
+            $route(to, from) {
+                let pathArr = to.path.split('/')
+                this.meunNow = [pathArr[0],pathArr[1],pathArr[2]].join('/')
             }
         },
         computed: mapState(["isCollapse", "innerWidth", "innerHeight"])

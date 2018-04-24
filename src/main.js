@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Menu, menuItem, Row, Col, Button, Input, Table, tableColumn, Card, Breadcrumb, breadcrumbItem } from 'element-ui';
+import { Menu, menuItem, Row, Col, Button, Input, Table, tableColumn, Card, Breadcrumb, breadcrumbItem, Popover, Tag } from 'element-ui';
 
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -25,6 +25,8 @@ Vue.use(tableColumn);
 Vue.use(Card);
 Vue.use(Breadcrumb);
 Vue.use(breadcrumbItem);
+Vue.use(Popover);
+Vue.use(Tag);
 
 /* eslint-disable no-new */
 new Vue({
