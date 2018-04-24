@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
-import ElementUI from 'element-ui';
+import { Menu, Row, Col, Button, Input, MenuItem } from 'element-ui';
 
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -14,7 +14,12 @@ import store from './vuex/store'
 Vue.config.productionTip = false;
 
 Vue.use(Vuex);
-Vue.use(ElementUI);
+Vue.use(Menu);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Button);
+Vue.use(Input);
+Vue.use(MenuItem);
 
 /* eslint-disable no-new */
 new Vue({
