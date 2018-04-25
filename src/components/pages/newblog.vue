@@ -2,7 +2,7 @@
     <el-row>
         <VmMarkdown theme="default"
                     width="100%" 
-                    height="500px" 
+                    height="400px" 
                     v-on:gethtml="showHtml"
                     >
         </VmMarkdown>
