@@ -2,7 +2,32 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Menu, menuItem, Row, Col, Button, Input, Table, tableColumn, Card, Breadcrumb, breadcrumbItem, Popover, Tag, Select, Option, Form, formItem } from 'element-ui';
+import { 
+  Menu, 
+  menuItem, 
+  Row, 
+  Col, 
+  Button, 
+  Input, 
+  Table, 
+  tableColumn, 
+  Card, 
+  Breadcrumb, 
+  breadcrumbItem, 
+  Popover, 
+  Tag, 
+  Select, 
+  Option, 
+  Form, 
+  formItem,
+  Radio,
+  radioGroup,
+  radioButton,
+  Checkbox,
+  checkboxGroup,
+  checkboxButton,
+  Collapse,
+  collapseItem } from 'element-ui';
 
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -31,6 +56,14 @@ Vue.use(Select);
 Vue.use(Option);
 Vue.use(Form);
 Vue.use(formItem);
+Vue.use(Radio);
+Vue.use(radioGroup);
+Vue.use(radioButton);
+Vue.use(Checkbox);
+Vue.use(checkboxGroup);
+Vue.use(checkboxButton);
+Vue.use(Collapse);
+Vue.use(collapseItem);
 
 /* eslint-disable no-new */
 new Vue({
