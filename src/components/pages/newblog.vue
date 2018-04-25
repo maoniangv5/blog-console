@@ -6,7 +6,7 @@
                     v-on:gethtml="showHtml"
                     >
         </VmMarkdown>
-        <p>{{htmlStr}}</p>
+        <p v-html="htmlStr"></p>
     </el-row>
 </template>
 

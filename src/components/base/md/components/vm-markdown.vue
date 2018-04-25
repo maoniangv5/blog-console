@@ -1,5 +1,5 @@
 <template>
-  <div class="vm-markdown" :style="{width: width, height:height}">
+  <div class="vm-markdown" :style="{width: width, height:height}" @keyup.esc="pressEsc">
     <VmMarkdownMenu :bgMenu="themeValue.bgMenu" 
                     :menuBorder="themeValue.menuBorder"
                     :menuColor="themeValue.menuColor"
@@ -207,6 +207,13 @@ export default {
         })
       }
     },
+    pressEsc () {
+      let VmMarkdown = document.querySelector('.vm-markdown')
+              if (VmMarkdown.style.position === 'fixed') {
+                VmMarkdown.style.cssText = 'width:' + this.width + ';' + 'height:' + this.height + ';'
+              }
+      
+    },
     parseHtml () {
       let style = {
         ul: `
@@ -283,6 +290,8 @@ export default {
   },
   watch: {
     markdString(value){
+      let re = new RegExp('<p>', 'g');
+      let res = '<p>&emsp;&emsp;';
       marked.setOptions({
         renderer: new marked.Renderer(),
         gfm: true,
@@ -296,7 +305,7 @@ export default {
             return hljs.highlightAuto(code).value
         }
       })
-      this.htmlString = marked(value)
+      this.htmlString = marked(value).replace(re, res)
 
       setTimeout(()=>{
         this.parseHtml()
@@ -307,6 +316,7 @@ export default {
   mounted () {
     this.markdString = this.defaultText
     this.layoutControl()
+    this.pressEsc()
   }
 }
 </script>
