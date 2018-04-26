@@ -38,27 +38,27 @@
                 collapse: null,
                 menuData: [
                     {
-                        index: '/home/dashboard',
+                        index: '/dashboard',
                         title: '概览',
                         icon: 'fa-line-chart'
                     },
                     {
-                        index: '/home/blogs',
+                        index: '/blogs',
                         title: '博客',
                         icon: 'fa-file-word-o'
                     },
                     {
-                        index: '/home/category',
+                        index: '/category',
                         title: '类目',
                         icon: 'fa-bars'
                     },
                     {
-                        index: '/home/tags',
+                        index: '/tags',
                         title: '标签',
                         icon: 'fa-tags'
                     },
                     {
-                        index: '/home/media',
+                        index: '/media',
                         title: '媒体文件',
                         icon: 'fa-file-image-o'
                     }
@@ -68,7 +68,7 @@
         },
         mounted () {
             let pathArr = this.$route.path.split('/')
-            this.meunNow = [pathArr[0],pathArr[1],pathArr[2]].join('/')
+            this.meunNow = [pathArr[0],pathArr[1]].join('/')
             this.collapse = this.$store.state.isCollapse
         },
         methods: {
@@ -113,7 +113,7 @@
             },
             $route(to, from) {
                 let pathArr = to.path.split('/')
-                this.meunNow = [pathArr[0],pathArr[1],pathArr[2]].join('/')
+                this.meunNow = [pathArr[0],pathArr[1]].join('/')
             }
         },
         computed: mapState(["isCollapse", "innerWidth", "innerHeight"])

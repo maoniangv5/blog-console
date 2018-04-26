@@ -16,7 +16,7 @@
                     <el-button type="warning" plain @click="$refs['formSearch'].resetFields()">重置</el-button>
                 </el-form-item>
                 <el-form-item class="add-btn">
-                    <router-link to="/home/blogs/new">
+                    <router-link to="/blogs/new">
                         <el-button type="primary" circle class="add">
                             <i class="fa fa-plus fa-fw"></i>
                         </el-button>
