@@ -19,146 +19,141 @@
 </template>
 
 <script>
-    import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex'
 
-    export default {
-        name: "side",
-        data() {
-            return {
-                sideSize: {
-                    height: `${ this.$store.state.innerHeight - 140 }px`,
-                    width: `${ 180 }px`,
-                },
-                menuSize: {
-                    height: `${ this.$store.state.innerHeight - 200 }px`,
-                    width: `${ 180 }px`,
-                    overflowX: `hidden`,
-                    overflowY: `hidden`
-                },
-                collapse: null,
-                menuData: [
-                    {
-                        index: '/dashboard',
-                        title: '概览',
-                        icon: 'fa-line-chart'
-                    },
-                    {
-                        index: '/blogs',
-                        title: '博客',
-                        icon: 'fa-file-word-o'
-                    },
-                    {
-                        index: '/category',
-                        title: '类目',
-                        icon: 'fa-bars'
-                    },
-                    {
-                        index: '/tags',
-                        title: '标签',
-                        icon: 'fa-tags'
-                    },
-                    {
-                        index: '/media',
-                        title: '媒体文件',
-                        icon: 'fa-file-image-o'
-                    }
-                ],
-                meunNow: null
-            };
+export default {
+  name: 'side',
+  data () {
+    return {
+      sideSize: {
+        height: `${this.$store.state.innerHeight - 140}px`,
+        width: `${180}px`
+      },
+      menuSize: {
+        height: `${this.$store.state.innerHeight - 200}px`,
+        width: `${180}px`,
+        overflowX: `hidden`,
+        overflowY: `hidden`
+      },
+      collapse: null,
+      menuData: [
+        {
+          index: '/admin/dashboard',
+          title: '概览',
+          icon: 'fa-line-chart'
         },
-        mounted () {
-            let pathArr = this.$route.path.split('/')
-            this.meunNow = [pathArr[0],pathArr[1]].join('/')
-            this.collapse = this.$store.state.isCollapse
+        {
+          index: '/admin/blogs',
+          title: '博客',
+          icon: 'fa-file-word-o'
         },
-        methods: {
-            ...mapMutations([  
-                'changeCollapse',
-                'changeInnerWidth'
-            ]),
-            handleOpen(key, keyPath) {
-            },
-            handleClose(key, keyPath) {
-            },
-            selectedItem(key, keyPath) {
-                this.meunNow = key
-            },
-            hover(event) {
-                this.menuSize.overflowY = `auto`
-            },
-            leave() {
-                this.menuSize.overflowY = `hidden`
-            },
-            changeColl() {
-                this.collapse = !this.collapse
-            }
+        {
+          index: '/admin/category',
+          title: '类目',
+          icon: 'fa-bars'
         },
-        watch: {
-            collapse: function (isCollapse) {
-                if (!isCollapse) {
-                    this.sideSize.width = `${ 64 }px`;
-                    this.menuSize.width = `${ 64 }px`;
-                } else {
-                    this.sideSize.width = `${ 180 }px`;
-                    this.menuSize.width = `${ 180 }px`;
-                }
-                this.changeCollapse()
-            },
-            innerHeight(innerHeight) {
-                this.sideSize.height = `${ innerHeight - 140 }px`
-                this.menuSize.height = `${ innerHeight - 200 }px`
-            },
-            innerWidth(innerWidth) {
-                this.collapse = innerWidth>1000?true:false;
-            },
-            $route(to, from) {
-                let pathArr = to.path.split('/')
-                this.meunNow = [pathArr[0],pathArr[1]].join('/')
-            }
+        {
+          index: '/admin/tags',
+          title: '标签',
+          icon: 'fa-tags'
         },
-        computed: mapState(["isCollapse", "innerWidth", "innerHeight"])
-    };
+        {
+          index: '/admin/media',
+          title: '媒体文件',
+          icon: 'fa-file-image-o'
+        }
+      ],
+      meunNow: null
+    }
+  },
+  mounted () {
+    let pathArr = this.$route.path.split('/')
+    this.meunNow = [pathArr[0], pathArr[1], pathArr[2]].join('/')
+    this.collapse = this.$store.state.isCollapse
+  },
+  methods: {
+    ...mapMutations(['changeCollapse', 'changeInnerWidth']),
+    handleOpen (key, keyPath) {},
+    handleClose (key, keyPath) {},
+    selectedItem (key, keyPath) {
+      this.meunNow = key
+    },
+    hover (event) {
+      this.menuSize.overflowY = `auto`
+    },
+    leave () {
+      this.menuSize.overflowY = `hidden`
+    },
+    changeColl () {
+      this.collapse = !this.collapse
+    }
+  },
+  watch: {
+    collapse: function (isCollapse) {
+      if (!isCollapse) {
+        this.sideSize.width = `${64}px`
+        this.menuSize.width = `${64}px`
+      } else {
+        this.sideSize.width = `${180}px`
+        this.menuSize.width = `${180}px`
+      }
+      this.changeCollapse()
+    },
+    innerHeight (innerHeight) {
+      this.sideSize.height = `${innerHeight - 140}px`
+      this.menuSize.height = `${innerHeight - 200}px`
+    },
+    innerWidth (innerWidth) {
+      this.collapse = innerWidth > 1000
+    },
+    $route (to, from) {
+      let pathArr = to.path.split('/')
+      this.meunNow = [pathArr[0], pathArr[1], pathArr[2]].join('/')
+    }
+  },
+  computed: mapState(['isCollapse', 'innerWidth', 'innerHeight'])
+}
 </script>
 
 <style scoped>
-    #side {
-        text-align: center;
-        position: fixed;
-        top: 80px;
-        overflow-y: auto;
-        border-right: 1px solid #eee
-    }
-    .switch {
-        position: fixed;
-        height: 30px;
-        line-height: 30px;
-        top: 80px;
-        z-index: 999;
-        width: inherit;
-        cursor: pointer;
-    }
-    .switch:hover {
-        background-color: #ecf5ff
-    }
-    .menu-area {
-        position: fixed;
-        top: 120px;
-        text-align: left;
-    }
-    .menu {
-        border: none;
-    }
-    .el-menu--collapse {
-        text-align: left;
-    }
-    .el-menu-item {
-        border-left: 4px solid #eee;
-        padding: 0;
-        margin: 1px;
-        height: 40px;
-        line-height: 40px;
-    }
-    .is-active {
-        border-left: 4px solid #409EFF;
-    }
+#side {
+  text-align: center;
+  position: fixed;
+  top: 80px;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+}
+.switch {
+  position: fixed;
+  height: 30px;
+  line-height: 30px;
+  top: 80px;
+  z-index: 999;
+  width: inherit;
+  cursor: pointer;
+}
+.switch:hover {
+  background-color: #ecf5ff;
+}
+.menu-area {
+  position: fixed;
+  top: 120px;
+  text-align: left;
+}
+.menu {
+  border: none;
+}
+.el-menu--collapse {
+  text-align: left;
+}
+.el-menu-item {
+  border-left: 4px solid #eee;
+  padding: 0;
+  margin: 1px;
+  height: 40px;
+  line-height: 40px;
+}
+.is-active {
+  border-left: 4px solid #409eff;
+}
 </style>

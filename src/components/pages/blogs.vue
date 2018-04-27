@@ -16,7 +16,7 @@
                     <el-button type="warning" plain @click="$refs['formSearch'].resetFields()">重置</el-button>
                 </el-form-item>
                 <el-form-item class="add-btn">
-                    <router-link to="/blogs/new">
+                    <router-link to="/admin/blogs/new">
                         <el-button type="primary" circle class="add">
                             <i class="fa fa-plus fa-fw"></i>
                         </el-button>
@@ -24,7 +24,6 @@
                 </el-form-item>
             </el-form>
         </el-col>
-        
         <el-col class="blog-table">
             <el-table :data="tableData" border size="mini">
                 <el-table-column label="标题" width="350">
@@ -55,48 +54,45 @@
 </template>
 
 <script>
-    export default {
-        name: 'tags',
-        data() {
-            return {
-                tableData: [{title: 'hello'},{title: 'world'}],
-                formSearch: {
-                    title: '',
-                    category: ''
-                },
-                searchOpt: [{
-                        value: '1',
-                        label: '黄金糕'
-                    },
-                    {
-                        value: '2',
-                        label: '双皮奶'
-                    }, 
-                    {
-                        value: '3',
-                        label: '蚵仔煎'
-                    }
-                ]
-            }
+export default {
+  name: 'tags',
+  data () {
+    return {
+      tableData: [{ title: 'hello' }, { title: 'world' }],
+      formSearch: {
+        title: '',
+        category: ''
+      },
+      searchOpt: [
+        {
+          value: '1',
+          label: '黄金糕'
         },
-        mounted(){
+        {
+          value: '2',
+          label: '双皮奶'
         },
-        methods: {
-            search () {}
-        },
-        watch: {
+        {
+          value: '3',
+          label: '蚵仔煎'
         }
-        
+      ]
     }
+  },
+  mounted () {},
+  methods: {
+    search () {}
+  },
+  watch: {}
+}
 </script>
 
 <style scoped>
 .add-btn {
-    float:right;
-    margin:0;
+  float: right;
+  margin: 0;
 }
 .add {
-    padding: 10px 9px;
+  padding: 10px 9px;
 }
-
 </style>

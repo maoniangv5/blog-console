@@ -12,35 +12,38 @@ import newblog from '@/components/pages/newblog'
 Vue.use(Router)
 
 const router = new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '/login',
-            component: login
-        },
-        {
-            path: '/',
-            redirect: '/dashboard',
-            component: home,
-            children:[
-                { path: '/dashboard', component: dashboard},
-                { path: '/blogs', component: blogs},
-                { path: '/category', component: category},
-                { path: '/tags', component: tags},
-                { path: '/media', component: media}
-            ]
-        },
-        {
-            path: 'blogs',
-            component: home,
-            children: [
-                { path: '/blogs/new', component: newblog}
-            ]
-        }
-    ]
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      redirect: '/admin'
+    },
+    {
+      path: '/login',
+      redirect: '/admin/login'
+    },
+    {
+      path: '/admin',
+      redirect: '/admin/dashboard',
+      component: home,
+      children: [
+        { path: '/admin/dashboard', component: dashboard },
+        { path: '/admin/blogs', component: blogs },
+        { path: '/admin/category', component: category },
+        { path: '/admin/tags', component: tags },
+        { path: '/admin/media', component: media },
+        { path: '/admin/login', component: login }
+      ]
+    },
+    {
+      path: '/admin/blogs',
+      component: home,
+      children: [
+        { path: '/admin/blogs/new', component: newblog }
+      ]
+    }
+  ]
 })
-
-
 
 // 登录中间验证，页面需要登录而没有登录的情况直接跳转登录
 /*

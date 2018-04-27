@@ -20,31 +20,29 @@
 </template>
 
 <script>
-    import topBar from './structure/topBar.vue'
-    import sideBar from './structure/sideBar.vue'
-    import footBar from './structure/footBar.vue'
-    import contentArea from './structure/contentArea.vue'
-    export default {
-        name: 'home',
-        components: {
-            topBar,
-            sideBar,
-            footBar,
-            contentArea
-        }
-    }
+import topBar from './structure/topBar.vue'
+import sideBar from './structure/sideBar.vue'
+import footBar from './structure/footBar.vue'
+import contentArea from './structure/contentArea.vue'
+export default {
+  name: 'home',
+  components: {
+    topBar,
+    sideBar,
+    footBar,
+    contentArea
+  }
+}
 </script>
 
 <style scoped>
-    #index {
-        margin: 0;
-    };
-    .top {
-        border-bottom: 1px solid #eee;
-    }
-    .mid {
-        padding: 0 5%;
-    }
-    .foot {
-    }
+#index {
+  margin: 0;
+}
+.top {
+  border-bottom: 1px solid #eee;
+}
+.mid {
+  padding: 0 5%;
+}
 </style>
