@@ -19,6 +19,7 @@ export default {
 }
 body, html{
   width: 100%;
+  background-color: #f4f5f5;
 }
 a {
   text-decoration: none;

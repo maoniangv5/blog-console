@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
 import {
   Menu,
   MenuItem,
@@ -66,6 +67,7 @@ Vue.use(Collapse)
 Vue.use(CollapseItem)
 
 Vue.prototype.$message = Message
+Vue.prototype.$axios = Axios
 
 /* eslint-disable no-new */
 new Vue({

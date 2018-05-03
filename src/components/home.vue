@@ -12,10 +12,9 @@
                 <contentArea></contentArea>
             </div>
         </el-col>
-        <el-col :span="24" class="foot">
+        <!-- <el-col :span="24" class="foot">
             <footBar></footBar>
-        </el-col>
-
+        </el-col> -->
     </el-row>
 </template>
 
@@ -44,5 +43,6 @@ export default {
 }
 .mid {
   padding: 0 5%;
+  background-color: #f4f5f5;
 }
 </style>

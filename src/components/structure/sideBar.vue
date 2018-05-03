@@ -26,11 +26,11 @@ export default {
   data () {
     return {
       sideSize: {
-        height: `${this.$store.state.innerHeight - 140}px`,
+        // height: `${this.$store.state.innerHeight - 100}px`,
         width: `${180}px`
       },
       menuSize: {
-        height: `${this.$store.state.innerHeight - 200}px`,
+        height: `${this.$store.state.innerHeight - 160}px`,
         width: `${180}px`,
         overflowX: `hidden`,
         overflowY: `hidden`
@@ -38,27 +38,27 @@ export default {
       collapse: null,
       menuData: [
         {
-          index: '/admin/dashboard',
+          index: '/dashboard',
           title: '概览',
           icon: 'fa-line-chart'
         },
         {
-          index: '/admin/blogs',
+          index: '/blogs',
           title: '博客',
           icon: 'fa-file-word-o'
         },
         {
-          index: '/admin/category',
+          index: '/category',
           title: '类目',
           icon: 'fa-bars'
         },
         {
-          index: '/admin/tags',
+          index: '/tags',
           title: '标签',
           icon: 'fa-tags'
         },
         {
-          index: '/admin/media',
+          index: '/media',
           title: '媒体文件',
           icon: 'fa-file-image-o'
         }
@@ -68,7 +68,7 @@ export default {
   },
   mounted () {
     let pathArr = this.$route.path.split('/')
-    this.meunNow = [pathArr[0], pathArr[1], pathArr[2]].join('/')
+    this.meunNow = [pathArr[0], pathArr[1]].join('/')
     this.collapse = this.$store.state.isCollapse
   },
   methods: {
@@ -100,15 +100,15 @@ export default {
       this.changeCollapse()
     },
     innerHeight (innerHeight) {
-      this.sideSize.height = `${innerHeight - 140}px`
-      this.menuSize.height = `${innerHeight - 200}px`
+      // this.sideSize.height = `${innerHeight - 100}px`
+      this.menuSize.height = `${innerHeight - 160}px`
     },
     innerWidth (innerWidth) {
       this.collapse = innerWidth > 1000
     },
     $route (to, from) {
       let pathArr = to.path.split('/')
-      this.meunNow = [pathArr[0], pathArr[1], pathArr[2]].join('/')
+      this.meunNow = [pathArr[0], pathArr[1]].join('/')
     }
   },
   computed: mapState(['isCollapse', 'innerWidth', 'innerHeight'])
@@ -121,7 +121,7 @@ export default {
   position: fixed;
   top: 80px;
   overflow-y: auto;
-  border-right: 1px solid #eee;
+  background-color: #fff;
 }
 .switch {
   position: fixed;
@@ -129,19 +129,21 @@ export default {
   line-height: 30px;
   top: 80px;
   z-index: 999;
-  width: inherit;
+  width: 20px;
+  text-align: center;
   cursor: pointer;
-}
-.switch:hover {
-  background-color: #ecf5ff;
 }
 .menu-area {
   position: fixed;
   top: 120px;
   text-align: left;
+  border-radius: 5px;
 }
 .menu {
   border: none;
+}
+li {
+  border-radius: 5px;
 }
 .el-menu--collapse {
   text-align: left;
@@ -155,5 +157,6 @@ export default {
 }
 .is-active {
   border-left: 4px solid #409eff;
+  background-color: #ecf5ff
 }
 </style>

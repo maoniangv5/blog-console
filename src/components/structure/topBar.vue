@@ -14,7 +14,7 @@
         <el-col  :span="showSearch?8:12" :offset="showSearch?6:8">
             <div class="avatar-area">
                 <div class="logout">退 出</div>
-                <img class="avatar" src="../../../static/img/avatar/avatar.jpg" alt="avatar" width="34" height="34">
+                <img class="avatar" src="../../../static/img/avatar/avatar.png" alt="avatar" width="34" height="34">
             </div>
         </el-col>
     </el-row>
@@ -33,6 +33,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this)
     const that = this
     this.showSite = this.$store.state.innerWidth > 1160
     this.showSearch = this.$store.state.innerWidth > 700

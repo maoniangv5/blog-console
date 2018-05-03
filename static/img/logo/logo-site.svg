@@ -1,9 +1,7 @@
-<svg width="360.7" height="86.60000000000001" xmlns="http://www.w3.org/2000/svg">
- <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
-
+<svg width="321" height="86.6" xmlns="http://www.w3.org/2000/svg">
  <g stroke="null">
   <title>background</title>
-  <rect stroke="null" fill="none" id="canvas_background" height="159.452914" width="657.811385" y="-1" x="-1"/>
+  <rect stroke="null" fill="none" id="canvas_background" height="27.85075" width="97.8209" y="-1" x="-1"/>
   <g stroke="null" display="none" id="canvasGrid">
    <rect stroke="null" fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" id="svg_1"/>
   </g>
@@ -19,6 +17,6 @@
   <line fill="none" stroke="#ff4500" stroke-width="3" stroke-opacity="null" x1="33" y1="62" x2="26" y2="43.3" id="svg_7" stroke-linejoin="null" stroke-linecap="null"/>
   <line fill="none" stroke="#ff4500" stroke-width="3" stroke-opacity="null" x1="64.75" y1="30" x2="74" y2="43.3" id="svg_10" stroke-linejoin="round" stroke-linecap="null"/>
   <line stroke-linecap="round" stroke-linejoin="round" id="svg_11" y2="76.6" x2="116.25" y1="10" x1="116.25" stroke-width="6" stroke="#DCDFE6" fill="#DCDFE6"/>
-  <text fill="#409EFF" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="135.542075" y="39.511788" id="svg_8" font-size="25" font-family="'Trebuchet MS', Gadget, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(2.3059542179107666,0,0,2.290205717086792,-184.58846648782492,-26.832247022539377) " stroke="#000" font-weight="normal">xicha.biz</text>
+  <text fill="#409EFF" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="135.54208" y="40.63766" id="svg_8" font-size="28" font-family="'Trebuchet MS', Gadget, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(2.3059542179107666,0,0,2.290205717086792,-184.58846648782492,-26.832247022539377) " stroke="#000" font-weight="normal">MAX4A</text>
  </g>
 </svg>

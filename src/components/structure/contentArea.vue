@@ -12,7 +12,8 @@ export default {
   data () {
     return {
       contSize: {
-        width: `${this.$store.state.innerWidth * 0.85 - 180}px`
+        width: `${this.$store.state.innerWidth * 0.85 - 180}px`,
+        minHeight: `${this.$store.state.innerHeight - 121}px`
       },
       collapse: null
     }
@@ -37,6 +38,10 @@ export default {
       } else {
         this.contSize.width = `${this.innerWidth * 0.85 - 64}px`
       }
+      this.contSize.minHeight = `${this.$store.state.innerHeight - 121}px`
+    },
+    innerHeight (innerHeight) {
+      this.contSize.minHeight = `${this.$store.state.innerHeight - 121}px`
     }
   },
   computed: mapState(['isCollapse', 'innerWidth', 'isScrollbar', 'innerHeight'])
@@ -45,9 +50,11 @@ export default {
 
 <style scoped>
 #cont {
-  margin: 60px 0;
+  margin-top: 80px;
+  margin-bottom: 20px;
   float: right;
-  padding: 20px 0;
-  margin-bottom: 60px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 2px;
 }
 </style>

@@ -12,36 +12,62 @@ import newblog from '@/components/pages/newblog'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
-      redirect: '/admin'
+      redirect: '/dashboard'
     },
     {
       path: '/login',
-      redirect: '/admin/login'
+      component: login
     },
     {
-      path: '/admin',
-      redirect: '/admin/dashboard',
+      path: '/',
       component: home,
       children: [
-        { path: '/admin/dashboard', component: dashboard },
-        { path: '/admin/blogs', component: blogs },
-        { path: '/admin/category', component: category },
-        { path: '/admin/tags', component: tags },
-        { path: '/admin/media', component: media },
-        { path: '/admin/login', component: login }
+        { path: '/dashboard', component: dashboard },
+        { path: '/blogs', component: blogs },
+        { path: '/category', component: category },
+        { path: '/tags', component: tags },
+        { path: '/media', component: media }
       ]
     },
     {
-      path: '/admin/blogs',
+      path: '/blogs',
       component: home,
       children: [
-        { path: '/admin/blogs/new', component: newblog }
+        { path: '/blogs/new', component: newblog }
       ]
     }
+
+    // {
+    //   path: '/',
+    //   redirect: '/admin'
+    // },
+    // {
+    //   path: '/login',
+    //   redirect: '/admin/login'
+    // },
+    // {
+    //   path: '/admin',
+    //   redirect: '/admin/dashboard',
+    //   component: home,
+    //   children: [
+    //     { path: '/admin/dashboard', component: dashboard },
+    //     { path: '/admin/blogs', component: blogs },
+    //     { path: '/admin/category', component: category },
+    //     { path: '/admin/tags', component: tags },
+    //     { path: '/admin/media', component: media },
+    //     { path: '/admin/login', component: login }
+    //   ]
+    // },
+    // {
+    //   path: '/admin/blogs',
+    //   component: home,
+    //   children: [
+    //     { path: '/admin/blogs/new', component: newblog }
+    //   ]
+    // }
   ]
 })
 

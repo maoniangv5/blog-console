@@ -2,7 +2,7 @@
   <div class="vm-editor-menu"
        :style="{backgroundColor:bgMenu, color:menuColor, border:menuBorder}">
     <div class="command">
-      <VmMarkdownButton icon="iconfont icon-heading">
+      <VmMarkdownButton icon="fa fa-fw fa-header">
         <VmMarkdownDropdown>
           <ul class="vm-editor-ul" :style="{color: filterColor}">
             <li @click="insertText('# H1\n')">
@@ -23,31 +23,29 @@
           </ul>
         </VmMarkdownDropdown>
       </VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-bold" @click.native="insertText(' **Bold** ')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-italic" @click.native="insertText(' *Italic* ')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-strikethrough" 
+      <VmMarkdownButton icon="fa fa-fw fa-bold" @click.native="insertText(' **Bold** ')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-italic" @click.native="insertText(' *Italic* ')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-strikethrough" 
                         @click.native="insertText(' ~~Strikethrough~~ ')">                
       </VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-ol" @click.native="insertText('1. Ordered List\n')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-ul" @click.native="insertText('- Unordered List\n')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-quote" @click.native="insertText(' > Blockquote\n\n')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-code" @click.native="insertText('```\nCode\n```\n')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-table">
+      <VmMarkdownButton icon="fa fa-fw fa-list-ol" @click.native="insertText('1. Ordered List\n')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-list-ul" @click.native="insertText('- Unordered List\n')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-quote-left" @click.native="insertText(' > Blockquote\n\n')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-code" @click.native="insertText('```\nCode\n```\n')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-table">
         <VmMarkdownTable :hoverColor="bgMenu"
                          @textChange="uploadTable">
         </VmMarkdownTable>
       </VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-image" 
-                        @click.native="insertText('![Logo](https://github.com/luosijie/Front-end-Blog/blob/master/img/logo_vmmarkdown_name.png?raw=true)\n')">
-      </VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-line" @click.native="insertText('***\n')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-image" id="fileSelect"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-minus" @click.native="insertText('***\n')"></VmMarkdownButton>
+      <!-- 隐藏的模拟input -->
+      <input type="file" id="fileElem" accept="image/*" @change="handleFiles($event)" style="display：none">
     </div>
     <div class="vm-markdown-layout">
-      <VmMarkdownButton icon="iconfont icon-layout-default" layout="default"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-right" layout="right"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-left" layout="left"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-zoom" layout="zoom"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-columns" layout="columns"></VmMarkdownButton>
+      <VmMarkdownButton icon="fa fa-fw fa-arrows-alt" layout="zoom"></VmMarkdownButton>
     </div>
   </div>
 </template>
@@ -88,6 +86,9 @@
         text-align: center;
       }
     }  
+  }
+  #fileElem{
+    display: none
   }
 </style>
 <script>
@@ -132,7 +133,26 @@ export default {
       this.$emit('textChange', content.value)
     },
     uploadTable(content){
+      console.log(content)
       this.$emit('textChange', content)
+    },
+    handleFiles(e){
+      let file = e.target.files[0];           
+      let param = new FormData(); //创建form对象
+      param.append('file',file,file.name);//通过append向form对象添加数据
+
+      this.$axios({
+        method:"POST",
+        url:'https://www.xicha.biz/files/upload',
+        data: param,
+        headers:{'Content-Type':'multipart/form-data'}
+      })
+      .then(function (res) {
+        console.log(res)
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
     }
   },
   mounted () {
@@ -147,6 +167,16 @@ export default {
         evt.target.style.color = ''
       } 
     })
+    // 为图片按钮绑定自定义事件
+    let fileSelect = document.getElementById("fileSelect"),
+    fileElem = document.getElementById("fileElem");
+
+    fileSelect.addEventListener("click", function (e) {
+      if (fileElem) {
+        fileElem.click();
+      }
+      e.preventDefault(); // prevent navigation to "#"
+    }, false);
   }
 }
 </script>
