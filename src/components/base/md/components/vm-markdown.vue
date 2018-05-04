@@ -176,6 +176,7 @@ export default {
       let VmMarkdownLayout = document.querySelector(".vm-markdown-layout");
       let VmMarkdown = document.querySelector(".vm-markdown");
       let VmMarkdownEdit = document.querySelector(".vm-markdown-edit");
+      let VmMarkdownHtml = document.querySelector(".vm-markdown-html");
 
       let is = VmMarkdownLayout.querySelectorAll("i");
       let click_times = 0;
@@ -200,12 +201,19 @@ export default {
             switch (click_times % 3) {
               case 0:
                 VmMarkdownEdit.style.width = "50%";
+                VmMarkdownHtml.style.width = "50%";
+                VmMarkdownEdit.style.display = "block";
+                VmMarkdownHtml.style.display = "block";
                 break;
               case 1:
                 VmMarkdownEdit.style.width = "100%";
+                VmMarkdownEdit.style.display = "block";
+                VmMarkdownHtml.style.display = "none";
                 break;
               case 2:
-                VmMarkdownEdit.style.width = "0";
+                VmMarkdownEdit.style.display = "none";
+                VmMarkdownHtml.style.display = "block";
+                VmMarkdownHtml.style.width = "100%";
                 break;
             }
             return
@@ -257,6 +265,7 @@ export default {
         img: `
               margin: 5px auto;
               border-radius: 5px;
+              max-width: 800px
              `,
         a: `
             color: #41b883;
@@ -296,7 +305,7 @@ export default {
   },
   watch: {
     markdString(value) {
-      let re = new RegExp("<p>", "g");
+      let re = new RegExp("(?!<p><img)<p>", "g");
       let res = "<p>&emsp;&emsp;";
       marked.setOptions({
         renderer: new marked.Renderer(),

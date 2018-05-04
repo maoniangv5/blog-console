@@ -137,21 +137,22 @@ export default {
       this.$emit('textChange', content)
     },
     handleFiles(e){
+      let _this = this
       let file = e.target.files[0];           
       let param = new FormData(); //创建form对象
       param.append('file',file,file.name);//通过append向form对象添加数据
-
       this.$axios({
         method:"POST",
-        url:'https://www.xicha.biz/files/upload',
+        url:'https://api.xicha.biz/api/upload',
         data: param,
         headers:{'Content-Type':'multipart/form-data'}
       })
       .then(function (res) {
-        console.log(res)
+        let img_url = res.data.result.imageurl
+        let img_name = res.data.result.imagename
+        _this.insertText(`![net err](${img_url})`)
       })
       .catch(function (err) {
-        console.log(err)
       })
     }
   },
@@ -175,7 +176,6 @@ export default {
       if (fileElem) {
         fileElem.click();
       }
-      e.preventDefault(); // prevent navigation to "#"
     }, false);
   }
 }
