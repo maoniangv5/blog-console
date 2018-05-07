@@ -33,7 +33,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
     const that = this
     this.showSite = this.$store.state.innerWidth > 1160
     this.showSearch = this.$store.state.innerWidth > 700

@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-#index {
+#home {
   margin: 0;
 }
 .top {
@@ -43,6 +43,6 @@ export default {
 }
 .mid {
   padding: 0 5%;
-  background-color: #f4f5f5;
+  background-color: #f4f5f5
 }
 </style>

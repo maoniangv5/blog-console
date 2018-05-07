@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
+import Fingerprint2 from 'fingerprintjs2'
 import {
   Menu,
   MenuItem,
@@ -36,8 +37,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
+import cookieHandle from './util/cookie'
 
 Vue.config.productionTip = false
+
+new Fingerprint2().get(function (result, components) {
+  cookieHandle.set('UNIQ', result)
+})
 
 Vue.use(Vuex)
 Vue.use(Menu)

@@ -1,10 +1,8 @@
 <template>
     <div id="side" :style="sideSize">
-        <div class="switch">
-            <div @click="changeColl">
-                <i v-if="collapse" class="fa fa-ellipsis-v"></i>
-                <i v-else class="fa fa-ellipsis-h"></i>
-            </div>
+        <div class="switch" @click="changeColl">
+            <i v-if="collapse" class="fa fa-ellipsis-v"></i>
+            <i v-else class="fa fa-ellipsis-h"></i>
         </div>
         <div class="menu-area" :style="menuSize" @mouseover="hover($event)" @mouseout="leave">
             <el-menu class="menu" v-for="item in menuData" :key="item.index" :default-active="meunNow" @open="handleOpen" @close="handleClose" :collapse="isCollapse" @select="selectedItem" router>
@@ -26,11 +24,11 @@ export default {
   data () {
     return {
       sideSize: {
-        // height: `${this.$store.state.innerHeight - 100}px`,
+        height: `${this.$store.state.innerHeight - 100}px`,
         width: `${180}px`
       },
       menuSize: {
-        height: `${this.$store.state.innerHeight - 160}px`,
+        height: `${this.$store.state.innerHeight - 150}px`,
         width: `${180}px`,
         overflowX: `hidden`,
         overflowY: `hidden`
@@ -100,8 +98,8 @@ export default {
       this.changeCollapse()
     },
     innerHeight (innerHeight) {
-      // this.sideSize.height = `${innerHeight - 100}px`
-      this.menuSize.height = `${innerHeight - 160}px`
+      this.sideSize.height = `${innerHeight - 100}px`
+      this.menuSize.height = `${innerHeight - 150}px`
     },
     innerWidth (innerWidth) {
       this.collapse = innerWidth > 1000
@@ -122,6 +120,7 @@ export default {
   top: 80px;
   overflow-y: auto;
   background-color: #fff;
+  border-radius: 2px;
 }
 .switch {
   position: fixed;
@@ -129,9 +128,10 @@ export default {
   line-height: 30px;
   top: 80px;
   z-index: 999;
-  width: 20px;
+  width: inherit;
   text-align: center;
   cursor: pointer;
+  border-bottom: 1px solid #eee
 }
 .menu-area {
   position: fixed;
